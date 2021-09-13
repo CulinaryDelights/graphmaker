@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <title>Line Graph</title>
+    </head>
+
+    <body>
+        <div>
+            <p>Graph Title: </p>
+            <input type="text" id="graphTitleInput" value="Hi I'm Temmy">
+
+            <p>Graph Values: </p>
+            <input type="text" id="graphValuesInput" value="50 32 28 48">
+
+            <p>Graph Labels</p>
+            <input type="text" id="graphLabelsInput" value="yes yes yes yes">
+
+            <br>
+            <br>
+
+            <button onclick="DrawGraph()">Draw Graph</button>
+        </div>
+        
+        <div>
+            <h1 id="graphTitle"></h1>
+            <canvas id="graphCanvas"></canvas>
+        </div>
+        <button onclick="DownloadGraph()">Download Graph</button>
+        
+        <script src="graph.js"></script>
+    </body>
+</html>
