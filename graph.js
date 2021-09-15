@@ -7,6 +7,10 @@ graphTitleInput = document.getElementById("graphTitleInput");
 graphLabelsInput = document.getElementById("graphLabelsInput");
 graphValuesInput = document.getElementById("graphValuesInput");
 
+graphColorInput = document.getElementById("graphColorInput");
+graphLineColorInput = document.getElementById("graphLineColorInput");
+graphTitleColorInput = document.getElementById("graphTitleColorInput");
+
 class Entity {
     constructor(position, size, color, tag, type) {
         this.position = position;
@@ -74,7 +78,7 @@ function GameUpdate(progress) {
 }
 
 function GameRender() {
-    context.fillStyle = "#F0F0F0";
+    context.fillStyle = graphColorInput.value;
     context.fillRect(0, 0, context.canvas.width, context.canvas.height);
     entities.forEach(element => {
         if (element.type == entity_types.RECTANGLE) {
@@ -187,24 +191,23 @@ class Text extends Entity {
     }
 }
 
-AddEntity(new Text("","24px","black","Arial","center",new Vector2(context.canvas.width / 2,50),"graphTitle"));
 
 DrawGraph();
 function DrawGraph() {
-    CheckArrayTag(entities,"graphTitle").text = graphTitleInput.value;
-
+    
     var labelAmount = (graphLabelsInput.value.split(" ").length);
     var graphValues = graphValuesInput.value.split(' '); 
     var graphLabels = graphLabelsInput.value.split(' '); 
-
+    
     while(CheckArrayTags(entities,"circle").length > 0) {
         var i = 0; 
         RemoveEntity(CheckArrayTags(entities,"graphLines")[i]);
         RemoveEntity(CheckArrayTags(entities,"circle")[i]);
         RemoveEntity(CheckArrayTags(entities,"graphLabelText")[i]);
+        RemoveEntity(CheckArrayTags(entities,"graphTitle")[i]);
         i += 1;
     }
-
+    
     while(CheckArrayTags(entities,"graphNumberText").length > 0) {
         var i = 0; 
         RemoveEntity(CheckArrayTags(entities,"graphNumberText")[i]);
@@ -212,6 +215,10 @@ function DrawGraph() {
         i += 1;
     }
     
+    AddEntity(new Text("","24px",graphTitleColorInput.value,"Arial","center",new Vector2(context.canvas.width / 2,50),"graphTitle"));
+    CheckArrayTag(entities,"graphTitle").text = graphTitleInput.value;
+    CheckArrayTag(entities,"graphTitle").color = graphTitleColorInput.value;
+
     var highestPoint = Math.max.apply(Math,graphValues);
     var graphPoint = highestPoint / (context.canvas.height - 200);
 
@@ -236,11 +243,11 @@ function DrawGraph() {
     if(CheckArrayTags(entities,"circle").length == 0) {
         for(var i = 0; i < labelAmount; i++) {
             if(graphValues[i] == highestPoint || graphValues[i] > closestCompositeNum / lineAmount * (lineAmount - 1)) {
-                AddEntity(new Circle(new Vector2(i * ((context.canvas.width - 150) / (labelAmount - 1)) + 100,(context.canvas.height - (100 - (closestCompositeNum - highestPoint) * 5)) - graphValues[i] / graphPoint),new Vector2(7,7),"black"));
+                AddEntity(new Circle(new Vector2(i * ((context.canvas.width - 150) / (labelAmount - 1)) + 100,(context.canvas.height - (100 - (closestCompositeNum - highestPoint) * 5)) - graphValues[i] / graphPoint),new Vector2(7,7),graphLineColorInput.value));
                 console.log("hi")
             }
             else {
-                AddEntity(new Circle(new Vector2(i * ((context.canvas.width - 150) / (labelAmount - 1)) + 100,(context.canvas.height - (100 - (closestCompositeNum - highestPoint) * 2)) - graphValues[i] / graphPoint),new Vector2(7,7),"black"));
+                AddEntity(new Circle(new Vector2(i * ((context.canvas.width - 150) / (labelAmount - 1)) + 100,(context.canvas.height - (100 - (closestCompositeNum - highestPoint) * 2)) - graphValues[i] / graphPoint),new Vector2(7,7),graphLineColorInput.value));
             }
             AddEntity(new Text(graphLabels[i],"16px","black","Arial","center",new Vector2(i * ((context.canvas.width - 150) / (labelAmount - 1)) + 100,context.canvas.height - 50),"graphLabelText"));
         }
@@ -248,7 +255,7 @@ function DrawGraph() {
 
     if(CheckArrayTags(entities,"circle").length == labelAmount && CheckArrayTags(entities,"line") == 0) {
         for(var i = 1; i < labelAmount; i++) {
-            AddEntity(new Line(new Vector2(CheckArrayTags(entities,"circle")[i - 1].position.x,CheckArrayTags(entities,"circle")[i - 1].position.y),new Vector2(CheckArrayTags(entities,"circle")[i].position.x,CheckArrayTags(entities,"circle")[i].position.y),"black",5,"graphLines"));
+            AddEntity(new Line(new Vector2(CheckArrayTags(entities,"circle")[i - 1].position.x,CheckArrayTags(entities,"circle")[i - 1].position.y),new Vector2(CheckArrayTags(entities,"circle")[i].position.x,CheckArrayTags(entities,"circle")[i].position.y),graphLineColorInput.value,5,"graphLines"));
         }
     }
 
