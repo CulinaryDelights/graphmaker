@@ -14,17 +14,19 @@
 }
 
 body {
-    background-color: limegreen;
+    background-color: #202C39;
 }
 
 h1 {
     font-size: 2.5rem;
+    color: #EE9480;
 }
 
 p {
     font-family: Jua;
     font-weight: 600;
     font-size: 1.25rem;
+    color: #EE9480;
 }
 
 .centered {
@@ -72,15 +74,15 @@ p {
 .button {
     width: 8rem;
     height: 3.5rem;
-    background-color: lightblue;
+    background-color: #F29559;
     transition-duration: 0.2s;
     border: none;
 }
 
 .button:hover {
-    background: skyblue;
+    background: salmon;
 }
 
 .button:active {
-    background: blue;
+    background: orange;
 }
