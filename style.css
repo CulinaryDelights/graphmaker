@@ -2,3 +2,85 @@
     padding: 0;
     margin: 0;
 }
+
+@font-face {
+    font-family: Jua;
+    src: url(fonts/Jua-Regular.ttf);
+}
+
+@font-face {
+    font-family: Fredoka;
+    src: url(fonts/FredokaOne-Regular.ttf);
+}
+
+body {
+    background-color: limegreen;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+p {
+    font-family: Jua;
+    font-weight: 600;
+    font-size: 1.25rem;
+}
+
+.centered {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.vertical-centered {
+    position: absolute;
+    top: 50%;
+    transform: translate(0,-50%);
+}
+
+.not-graph-stuff {
+    position: absolute;
+    top: 8rem;
+}
+
+.graph-stuff, .color-stuff {
+    position: absolute;
+    top: 12rem;
+    left: 4%;
+    display: inline;
+    width: fit-content;
+}
+
+.graph-stuff > *, .color-stuff > * {
+    margin-bottom: 3rem;
+    width: fit-content;
+}
+
+.graph-stuff > div > p, .color-stuff > div > p {
+    font-size: 2rem;
+}
+
+.graph-stuff > div > input, .color-stuff > div > input {
+    font-size: 1.3rem;
+}
+
+.color-stuff {
+    left: 80%;
+}
+
+.button {
+    width: 8rem;
+    height: 3.5rem;
+    background-color: lightblue;
+    transition-duration: 0.2s;
+    border: none;
+}
+
+.button:hover {
+    background: skyblue;
+}
+
+.button:active {
+    background: blue;
+}

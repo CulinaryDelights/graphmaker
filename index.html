@@ -9,36 +9,54 @@
     </head>
 
     <body>
-        <div>
-            <p>Graph Title: </p>
-            <input type="text" id="graphTitleInput" value="">
+        <h1 style="text-align: center; position: relative; top: 3rem; font-family: Fredoka; font-weight: 200;">Graph Maker</h1>
 
-            <p>Graph Values: </p>
-            <input type="text" id="graphValuesInput" value="">
+        <div class="graph-stuff">
+            <div>
+                <p>Graph Title:</p>
+                <input type="text" id="graphTitleInput" value="">
+            </div>
 
-            <p>Graph Labels:</p>
-            <input type="text" id="graphLabelsInput" value="">
+            <div>
+                <p>Graph Values: </p>
+                <input type="text" id="graphValuesInput" value="">
+            </div>
 
-            <p>Graph Color:</p>
-            <input type="color" id="graphColorInput" value="#f0f0f0">
-
-            <p>Line Color:</p>
-            <input type="color" id="graphLineColorInput">
-
-            <p>Title Color:</p>
-            <input type="color" id="graphTitleColorInput">
-
-            <br>
-            <br>
-
-            <button onclick="DrawGraph()">Draw Graph</button>
+            <div>
+                <p>Graph Labels:</p>
+                <input type="text" id="graphLabelsInput" value="">
+            </div>
         </div>
-        
-        <div>
-            <h1 id="graphTitle"></h1>
-            <canvas id="graphCanvas"></canvas>
+
+        <div class="color-stuff">
+            <div>
+                <p>Graph Color:</p>
+                <input type="color" id="graphColorInput" value="#f0f0f0">
+            </div>
+                
+            <div>
+                <p>Line Color:</p>
+                <input type="color" id="graphLineColorInput">
+            </div>
+
+            <div>
+                <p>Title Color:</p>
+                <input type="color" id="graphTitleColorInput">
+            </div>
         </div>
-        <button onclick="DownloadGraph()">Download Graph</button>
+
+        <br>
+        <br>
+
+        <button onclick="DrawGraph()" class="button" style="position: absolute; bottom: 5rem; left: 8%;">Draw Graph</button>
+        <button onclick="DownloadGraph()" class="button" style="position: absolute; bottom: 5rem; right: 10%;">Download Graph</button>
+        <div class="not-graph-stuff centered">
+            
+            <div>
+                <h1 id="graphTitle"></h1>
+                <canvas id="graphCanvas"></canvas>
+            </div>
+        </div>
 
         <script src="graph.js"></script>
     </body>
